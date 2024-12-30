@@ -16,6 +16,14 @@ object SunnyWeatherNetwork {
 
     suspend fun searchPlaces(query: String) = placeService.searchPlaces(query).await()
 
+    private val weatherService = ServiceCreator.create<WeatherService>()
+    suspend fun getDailyResponse(lng: String, lat: String) =
+        weatherService.getDailyWeather(lng, lat).await()
+
+    suspend fun getRealtimeResponse(lng: String, lat: String) =
+        weatherService.getRealtimeWeather(lng, lat).await()
+
+
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine { continuation ->
             enqueue(object : Callback<T> {
@@ -28,7 +36,6 @@ object SunnyWeatherNetwork {
                 override fun onFailure(call: Call<T>, t: Throwable) {
                     continuation.resumeWithException(t)
                 }
-
             })
         }
     }
