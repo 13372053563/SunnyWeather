@@ -20,6 +20,6 @@ interface WeatherService {
     ): Call<RealTimeResponse>
 
     // 获取天气预报数据
-    @GET("v2.5/${SunnyWeatherApplication.TOKEN}/{lng},{lat}/daily.json")
+    @GET("v2.6/${SunnyWeatherApplication.TOKEN}/{lng},{lat}/daily?dailysteps=10")
     fun getDailyWeather(@Path("lng") lng: String, @Path("lat") lat: String): Call<DailyResponse>
 }

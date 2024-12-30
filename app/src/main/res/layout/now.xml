@@ -23,6 +23,14 @@
             android:text="地点"
             android:textColor="#fff"
             android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/navBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/ic_home" />
     </FrameLayout>
 
     <LinearLayout
